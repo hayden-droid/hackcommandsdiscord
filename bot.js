@@ -1,4 +1,4 @@
-const botSettings = require("./botsettings.json");
+
 const Discord = require("discord.js");
 const fs = require("fs");
 const prefix = botSettings.prefix;
@@ -61,7 +61,7 @@ bot.on("message", async message => {
 	let command = messageArray[0];
 	let args = messageArray.slice(1);
 
-	let cmd = bot.commands.get(command.slice(prefix.length));
+	let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
 
 	if (cmd) {
 
@@ -70,4 +70,4 @@ bot.on("message", async message => {
 	}
 });
 
-bot.login(botSettings.token);
+bot.login(process.env.TOKEN);
